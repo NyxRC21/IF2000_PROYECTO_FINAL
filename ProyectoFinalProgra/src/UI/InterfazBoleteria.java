@@ -20,13 +20,12 @@ import Clases.Vuelo;
  */
 public class InterfazBoleteria extends JFrame {
     
-public class Main extends JFrame {
     private JTextField nombreField, idField;
     private JComboBox<String> claseCombo;
     private JTextArea outputArea;
     private Reservacion reservacion;
 
-    public Main() {
+    public InterfazBoleteria() {
         // Hardcodear un vuelo fijo
         Avion avion = new Avion();
         Vuelo vuelo = new Vuelo("Bogotá", "Medellín", "2023-10-15", avion);
@@ -86,7 +85,7 @@ public class Main extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            new Main().setVisible(true);
+            new InterfazBoleteria().setVisible(true);
         });
     }
 }
