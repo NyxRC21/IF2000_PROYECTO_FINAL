@@ -3,33 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Clases;
-
 /**
  *
  * @author Daniel Ríos y Crisbel Madrigal
  */
 public class Factura {
 
-    private String id;
     private Tiquete tiquete;
-    private double subtotal;
-    private double iva;
-    private double total;
-
-    public Factura(String id, Tiquete tiquete, double subtotal, double iva, double total) {
-        this.id = id;
+    private double costo;
+    
+    public Factura(Tiquete tiquete) {
         this.tiquete = tiquete;
-        this.subtotal = subtotal;
-        this.iva = iva;
-        this.total = total;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+        this.costo = tiquete.getClase().equalsIgnoreCase("Ejecutiva") ? 1000.0 : 500.0;
     }
 
     public Tiquete getTiquete() {
@@ -40,36 +25,15 @@ public class Factura {
         this.tiquete = tiquete;
     }
 
-    public double getSubtotal() {
-        return subtotal;
+    public double getCosto() {
+        return costo;
     }
 
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
-    }
-
-    public double getIva() {
-        return iva;
-    }
-
-    public void setIva(double iva) {
-        this.iva = iva;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
-    @Override
-    public String toString() {
-        return "Factura{" + "id=" + id + ", tiquete=" + tiquete + ", subtotal=" + subtotal + ", iva=" + iva + ", total=" + total + '}';
-    }
+    public void setCosto(double costo) {
+        this.costo = costo;
+    }    
     
-    
-                
+    public String generarFactura() {
+        return "=== FACTURA ===\n" + tiquete.generarTiquete() + "\nCosto Total: $" + costo + "\n=================";
     }
-
+}

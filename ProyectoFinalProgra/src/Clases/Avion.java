@@ -3,53 +3,53 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Clases;
-
 /**
  *
  * @author Daniel Ríos y Crisbel Madrigal
  */
 public class Avion {
-    private String codigo;
-    private boolean ejecutivo[];
-    private boolean economico[];
-    
-    public Avion(String codigo){
-        this.ejecutivo = ejecutivo;
-        this.economico = economico;
-        this.codigo = codigo;
+  
+    private int asientosEjecutivos = 2; // Capacidad fija: 2 ejecutiva
+    private int asientosEconomicos = 2; // Capacidad fija: 2 económica
+
+    public Avion() {
+        this.asientosEjecutivos = asientosEjecutivos;
+        this.asientosEconomicos = asientosEconomicos;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public int getAsientosEjecutivos() {
+        return asientosEjecutivos;
     }
 
-    public boolean[] getEjecutivo() {
-        return ejecutivo;
+    public void setAsientosEjecutivos(int asientosEjecutivos) {
+        this.asientosEjecutivos = asientosEjecutivos;
     }
 
-    public boolean[] getEconomico() {
-        return economico;
+    public int getAsientosEconomicos() {
+        return asientosEconomicos;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-    public void setEjecutivo(boolean[] ejecutivo) {
-        this.ejecutivo = ejecutivo;
-    }
-
-    public void setEconomico(boolean[] economico) {
-        this.economico = economico;
+    public void setAsientosEconomicos(int asientosEconomicos) {
+        this.asientosEconomicos = asientosEconomicos;
     }
     
-    public String toString (){
-        return "Codigo{" +
-                "ejecutivo='" + ejecutivo + '\'' +
-                ", economico='" + economico + '\'' +
-                '}';
+    public boolean verificarDisponibilidad(String clase) {
+        if (clase.equalsIgnoreCase("Ejecutiva")) {
+            return asientosEjecutivos > 0;
+        } else if (clase.equalsIgnoreCase("Económica")) {
+            return asientosEconomicos > 0;
+        }
+        return false;
+    }
+    public boolean reservarAsiento(String clase) {
+        if (verificarDisponibilidad(clase)) {
+            if (clase.equalsIgnoreCase("Ejecutiva")) {
+                asientosEjecutivos--;
+            } else if (clase.equalsIgnoreCase("Económica")) {
+                asientosEconomicos--;
+            }
+            return true;
+        }
+        return false;
     }
 }
-    
-    
-
