@@ -6,7 +6,7 @@ package Clases;
 
 /**
  *
- * @author Daniel Ríos
+ * @author Daniel Ríos y Crisbel Madrigal
  */
 public class Avion {
     private String codigo;
